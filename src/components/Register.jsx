@@ -12,7 +12,8 @@ export default function Register() {
     //setUsers([...users, user]);
     try {
       const url = `${API}/register`;
-      await axios.post(url, user);
+      const res = await axios.post(url, user);
+      setUsers((prevUsers) => [...prevUsers, res.data]); // Add the new user to the context
       Navigate("/login");
     } catch (err) {
       console.log(err);
@@ -43,13 +44,13 @@ export default function Register() {
         />
       </p>
       <button onClick={handleSubmit}>Submit</button>
-      <hr />
+      {/* <hr />
       {users &&
         users.map((value) => (
           <li>
             {value.name}-{value.email}-{value.pass}
           </li>
-        ))}
+        ))} */}
     </div>
   );
 }

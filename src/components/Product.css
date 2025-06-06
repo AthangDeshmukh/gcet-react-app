@@ -1,11 +1,51 @@
 .App-Product-Row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: flex-start;
+  margin-top: 24px;
 }
 
-.App-Product-Row div {
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid gray;
+.App-Product-Row > div {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  padding: 24px 16px;
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s;
+}
+
+.App-Product-Row > div:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
+
+.App-Product-Row h3 {
+  margin: 0 0 8px 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.App-Product-Row h4 {
+  margin: 0 0 16px 0;
+  font-size: 1rem;
+  color: #007b55;
+}
+
+.App-Product-Row button {
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s;
+}
+
+.App-Product-Row button:hover {
+  background: #0056b3;
 }

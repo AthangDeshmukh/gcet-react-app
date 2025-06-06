@@ -1,82 +1,45 @@
-/* body {
-  font-family: Arial, sans-serif;
+body {
   margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  min-height: 100vh;
 }
 
-h3 {
-  color: #333;
-  text-align: center;
-  margin-bottom: 20px;
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.product-container {
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  max-width: 1200px;
-  margin: 30px auto;
+.App-Main-Content {
+  flex: 1;
+  padding-bottom: 80px; /* Space for footer */
 }
 
-.product-list {
-  list-style-type: none;
-  padding: 0;
-  margin: 20px auto;
-  max-width: 400px;
+a {
+  color: #007bff;
+  text-decoration: none;
+  transition: color 0.2s;
 }
 
-.product-list li {
-  background-color: #fff;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  text-align: center;
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
 }
 
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  padding: 0;
-  list-style-type: none;
+::-webkit-scrollbar {
+  width: 8px;
+  background: #e0eafc;
 }
 
-.product-item {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+::-webkit-scrollbar-thumb {
+  background: #b2ebf2;
+  border-radius: 8px;
 }
 
-.product-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+@media (max-width: 700px) {
+  .App-Main-Content {
+    padding: 0 4px;
+  }
 }
-
-.product-image {
-  max-width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
-}
-
-.product-title {
-  font-size: 1.1em;
-  font-weight: bold;
-  margin: 10px 0;
-  color: #333;
-}
-
-.product-price {
-  font-size: 1em;
-  color: #007BFF;
-  font-weight: bold;
-} */

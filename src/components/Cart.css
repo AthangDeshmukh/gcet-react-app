@@ -1,0 +1,117 @@
+body {
+  background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%);
+  min-height: 100vh;
+}
+
+.Cart-Container {
+  max-width: 600px;
+  margin: 48px auto;
+  background: #f8fafc;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px rgba(0,0,0,0.10);
+  padding: 36px 30px;
+  border: 1px solid #e3e8ee;
+}
+
+.Cart-Title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #007b55;
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.Cart-Item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e3e8ee;
+  padding: 20px 0;
+  font-size: 1.1rem;
+  background: #fff;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.03);
+}
+
+.Cart-Item-Name {
+  flex: 2;
+  color: #22223b;
+  font-weight: 600;
+}
+
+.Cart-Item-Price {
+  flex: 1;
+  color: #007b55;
+  text-align: right;
+  font-weight: 500;
+}
+
+.Cart-Item-Controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Cart-Item-Qty {
+  min-width: 32px;
+  text-align: center;
+  font-weight: 600;
+  color: #007bff;
+}
+
+.Cart-Button {
+  background: linear-gradient(90deg, #007bff 60%, #00c6a7 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,123,255,0.08);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.Cart-Button:hover {
+  background: linear-gradient(90deg, #0056b3 60%, #009e7a 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+
+.Cart-OrderValue {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #22223b;
+  margin: 32px 0 18px 0;
+  text-align: right;
+}
+
+.Cart-Action {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e3e8ee;
+  margin: 18px 0;
+}
+
+@media (max-width: 700px) {
+  .Cart-Container {
+    padding: 18px 6px;
+  }
+  .Cart-Title {
+    font-size: 1.3rem;
+  }
+  .Cart-Item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .Cart-OrderValue {
+    text-align: left;
+  }
+}

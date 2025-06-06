@@ -15,7 +15,7 @@ const Navigate = useNavigate()
         return sum + value.price * (cart[value.pid] ?? 0);
       }, 0)
     );
-  }, []);
+  }, [products, cart]);
 
   const increment = (id) => {
     setCart(prev => ({

@@ -9,7 +9,7 @@ export default function Header() {
       <h1>My Online Shop</h1>
       <Link to="/">Home</Link>-<Link to="/cart">Cart</Link>-
       <Link to="/order">Order</Link>-
-      {user.token ? (
+      {user.email ? (
         <Link to="/logout">Logout</Link>
       ) : (
         <Link to="/login">Login</Link>

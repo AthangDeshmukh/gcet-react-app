@@ -18,14 +18,22 @@ const Navigate = useNavigate()
   }, []);
 
   const increment = (id) => {
-    alert(id);
-    cart[id] = cart[id] + 1;
-    console.log(cart);
+    setCart(prev => ({
+      ...prev,
+      [id]: (prev[id] || 0) + 1
+    }));
   };
+
   const decrement = (id) => {
-    alert(id);
-    cart[id] = cart[id] - 1;
-    console.log(cart);
+    setCart(prev => {
+      const newCart = { ...prev };
+      if (newCart[id] > 1) {
+        newCart[id] = newCart[id] - 1;
+      } else {
+        delete newCart[id];
+      }
+      return newCart;
+    });
   };
 
   const placeOrder = async () => {
@@ -38,8 +46,8 @@ const Navigate = useNavigate()
   const loginToOrder = () => {
     Navigate("/login")
   }
-// ...existing code...
-return (
+
+  return (
   <div className="Cart-Container">
     <div className="Cart-Title">My Cart</div>
     {products &&

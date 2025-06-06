@@ -16,7 +16,9 @@ export default function Product() {
   }, []);
 
   const addToCart = (id) => {
+   
     !cart[id] && setCart({ ...cart, [id]: 1 });
+     console.log(cart)
     
   };
 

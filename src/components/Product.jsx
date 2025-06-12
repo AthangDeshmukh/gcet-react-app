@@ -9,6 +9,7 @@ export default function Product() {
   const API = import.meta.env.VITE_API_URL;
   const fetchProducts = async () => {
     const res = await axios.get(`${API}/products/all`);
+    // const res = await axios.get(`${API}/products/all`);
     setProducts(res.data);
   };
   useEffect(() => {
@@ -16,10 +17,7 @@ export default function Product() {
   }, []);
 
   const addToCart = (id) => {
-   
     !cart[id] && setCart({ ...cart, [id]: 1 });
-     console.log(cart)
-    
   };
 
   return (

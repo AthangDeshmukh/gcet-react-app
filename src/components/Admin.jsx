@@ -1,26 +1,47 @@
-import React, { useState } from "react";
+import React from "react";
+import { useEffect, useState, useContext } from "react";
 import { AppContext } from "../App";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import axios from "axios";
-export default function Register() {
-  const { users, setUsers } = useContext(AppContext);
-  const [user, setUser] = useState({});
-  const Navigate = useNavigate();
+export default function Admin() {
+  const { user, setUser } = useContext(AppContext);
+  const [users, setUsers] = useState([]);
   const API = import.meta.env.VITE_API_URL;
+  const fetchUser = async () => {
+    const url = `${API}/users/all`;
+    const res = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    setUsers(res.data);
+  };
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  const handleDelete = async (id) => {
+    const url = `${API}/users/${id}`;
+    await axios.delete(url, {
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+    fetchUser();
+  };
   const handleSubmit = async () => {
     //setUsers([...users, user]);
     try {
       const url = `${API}/users/register`;
       await axios.post(url, user);
-      Navigate("/login");
+      fetchUser()
     } catch (err) {
       console.log(err);
     }
+    
   };
   return (
-    <div style={{ margin: "30px" }}>
-      <h3>Register</h3>
+    <div>
+      <h2>User Management</h2>
       <p>
         <input
           type="text"
@@ -42,21 +63,23 @@ export default function Register() {
           onChange={(e) => setUser({ ...user, pass: e.target.value })}
         />
       </p>
-      {/* <p>
+      <p>
         <input
           type="text"
           placeholder="Role"
           onChange={(e) => setUser({ ...user, role: e.target.value })}
         />
-      </p> */}
+      </p>
       <button onClick={handleSubmit}>Submit</button>
-      <hr />
       {users &&
-        users.map((value) => (
-          <li>
-            {value.name}-{value.email}-{value.pass}
-          </li>
+        users.map((user) => (
+          <div>
+            {user.name}-{user.email}-{user.role}-
+            <button onClick={() => handleDelete(user._id)}>Delete</button>
+          </div>
         ))}
+        <hr />
+        <h2>Product Management</h2>
     </div>
   );
 }

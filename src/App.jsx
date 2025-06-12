@@ -10,6 +10,7 @@ import Logout from "./components/Logout";
 import Header from "./components/Header";
 import Order from "./components/Order";
 import Footer from "./components/Footer";
+import Admin from "./components/Admin";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createContext } from "react";
 export const AppContext = createContext();
@@ -42,6 +43,7 @@ function App() {
              <Route path="/order" element={<Order />}></Route>
             <Route path="/logout" element={<Logout />}></Route>
             <Route path="/register" element={<Register />}></Route>
+             <Route path="/admin" element={<Admin />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>

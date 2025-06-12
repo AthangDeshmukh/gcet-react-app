@@ -1,0 +1,30 @@
+.Header {
+  background: linear-gradient(90deg, #007bff 0%, #00bcd4 100%);
+  color: #fff;
+  padding: 18px 0 8px 0;
+  text-align: center;
+  box-shadow: 0 2px 12px rgba(0,123,255,0.08);
+}
+
+.Header h1 {
+  margin: 0 0 8px 0;
+  font-size: 2rem;
+  letter-spacing: 2px;
+}
+
+.Header nav {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.Header a {
+  color: #fff;
+  margin: 0 8px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.Header a:hover {
+  color: #ffe082;
+  text-decoration: underline;
+}

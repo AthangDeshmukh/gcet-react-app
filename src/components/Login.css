@@ -73,8 +73,29 @@ p {
   text-align: center;
 }
 
+.Logout-Container {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Logout-Box {
+  background: #fff;
+  padding: 32px 28px;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px rgba(0,123,255,0.10);
+  min-width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #007bff;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
 @media (max-width: 500px) {
-  .Login-Box {
+  .Login-Box, .Logout-Box {
     min-width: 90vw;
     padding: 18px 8px;
   }

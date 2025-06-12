@@ -28,27 +28,29 @@ export default function Login() {
   };
 
   return (
-    <div style={{ margin: "30px" }}>
-      <h3>Login</h3>
-      {msg}
-      <p>
-        <input
-          type="text"
-          placeholder="Email address"
-          onChange={(e) => setUser({ ...user, email: e.target.value })}
-        />
-      </p>
-      <p>
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setUser({ ...user, pass: e.target.value })}
-        />
-      </p>
-      <button onClick={handleSubmit}>Submit</button>
-      <p>
-        <button onClick={goToRegister}>Create Account</button>
-      </p>
+    <div className="Login-Container">
+      <div className="Login-Box">
+        <h3>Login</h3>
+        {msg}
+        <p>
+          <input
+            type="text"
+            placeholder="Email address"
+            onChange={(e) => setUser({ ...user, email: e.target.value })}
+          />
+        </p>
+        <p>
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setUser({ ...user, pass: e.target.value })}
+          />
+        </p>
+        <button onClick={handleSubmit}>Submit</button>
+        <p>
+          <button onClick={goToRegister}>Create Account</button>
+        </p>
+      </div>
     </div>
   );
 }

@@ -3,62 +3,75 @@ import { useContext } from "react";
 import { AppContext } from "../App";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./Cart.css";
+
 export default function Cart() {
   const { cart, setCart, products, user } = useContext(AppContext);
   const [orderValue, setOrderValue] = useState(0);
-const Navigate = useNavigate()
+  const Navigate = useNavigate();
   const API = import.meta.env.VITE_API_URL;
+
   useEffect(() => {
     setOrderValue(
       products.reduce((sum, value) => {
         return sum + value.price * (cart[value.pid] ?? 0);
       }, 0)
     );
-  }, [cart]);
+  }, [products, cart]);
 
   const increment = (id) => {
-    setCart({...cart,[id]:cart[id]+1})
+    setCart({ ...cart, [id]: (cart[id] || 0) + 1 });
   };
   const decrement = (id) => {
-    setCart({...cart,[id]:cart[id]-1})
+    if (cart[id] > 1) {
+      setCart({ ...cart, [id]: cart[id] - 1 });
+    } else {
+      const newCart = { ...cart };
+      delete newCart[id];
+      setCart(newCart);
+    }
   };
 
   const placeOrder = async () => {
     const url = `${API}/orders/new`;
     await axios.post(url, { email: user.email, orderValue: orderValue });
     setCart({});
-    Navigate("/order")
+    Navigate("/order");
   };
 
   const loginToOrder = () => {
-    Navigate("/login")
-  }
+    Navigate("/login");
+  };
+
   return (
-    <div>
-      My Cart
+    <div className="Cart-Container">
+      <div className="Cart-Title">My Cart</div>
       {products &&
         products.map(
           (value) =>
             cart[value.pid] && (
-              <div key={value.pid}>
-                {value.pid}
-                {value.name}-{value.price}-
-                <button onClick={() => decrement(value.pid)}>-</button>
-                {cart[value.pid]}
-                <button onClick={() => increment(value.pid)}>+</button>
-                {value.price * cart[value.pid]}
+              <div className="Cart-Item" key={value.pid}>
+                <span className="Cart-Item-Name">{value.name}</span>
+                <span className="Cart-Item-Price">₹{value.price}</span>
+                <div className="Cart-Item-Controls">
+                  <button className="Cart-Button" onClick={() => decrement(value.pid)}>-</button>
+                  <span className="Cart-Item-Qty">{cart[value.pid]}</span>
+                  <button className="Cart-Button" onClick={() => increment(value.pid)}>+</button>
+                </div>
+                <span className="Cart-Item-Price">₹{value.price * cart[value.pid]}</span>
               </div>
             )
         )}
       <hr />
-      <h3>Order Value:{orderValue}</h3>
+      <div className="Cart-OrderValue">Order Value: ₹{orderValue}</div>
       <hr />
-      {user.name ? (
-        <button onClick={placeOrder}>Place Order</button>
-      ) : (
-        <button onClick={loginToOrder}>Login to Order</button>
-      )}
-      <hr />
+      <div className="Cart-Action">
+        {user.name ? (
+          <button className="Cart-Button" onClick={placeOrder}>Place Order</button>
+        ) : (
+          <button className="Cart-Button" onClick={loginToOrder}>Login to Order</button>
+        )}
+      </div>
     </div>
   );
 }
